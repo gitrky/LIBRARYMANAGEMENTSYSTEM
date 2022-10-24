@@ -1,0 +1,74 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_USER
+@{
+    ViewBag.Title = "UserAdd";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2>Üye Ekleme Sayfası</h2>
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Ad</label>
+        @Html.TextBoxFor(y => y.NAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NAME, "", new { @style = "color:red" })
+        @*<input type="text" class="form-control" name="Employee" />*@
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Soyad</label>
+        @Html.TextBoxFor(y => y.SURNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SURNAME, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(y => y.USERNAME, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.USERNAME, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Tc Kimlik Numarası</label>
+        @Html.TextBoxFor(y => y.USERIDENTITY, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.USERIDENTITY, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Şifre</label>
+        @Html.TextBoxFor(y => y.PASSWORD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PASSWORD, "", new { @style = "color:red" })
+
+    </div>
+    <div style="margin-top:15px">
+        <label>Fotoğraf</label>
+        @Html.TextBoxFor(y => y.PHOTOGRAPH, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PHOTOGRAPH, "", new { @style = "color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Mail</label>
+        @Html.TextBoxFor(y => y.MAIL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.MAIL, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Telefon numarası</label>
+        @Html.TextBoxFor(y => y.TELEPHONENUM, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.TELEPHONENUM, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Okul</label>
+        @Html.TextBoxFor(y => y.SCHOOL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SCHOOL, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:15px">
+        <label>Adres</label>
+        @Html.TextAreaFor(y => y.ADDRESS, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ADDRESS, "", new { @style = "color:red" })
+    </div>
+
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="BTN1">Üye Ekle</button>
+    </div>
+</form>
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3319badf20e45538fa37e64bf9b1419" Name="Diagram1" ZoomLevel="56">
+        <EntityTypeShape EntityType="LIBRARYDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_ABOUTME" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_AUTHOR" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_BOOK" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_CATEGORY" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_CONTACT" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_DEPOSIT" Width="1.5" PointX="5.25" PointY="6" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_EMPLOYEE" Width="1.5" PointX="3" PointY="9.375" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_LANGUAGE" Width="1.5" PointX="0.75" PointY="9.375" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_LIBRARY" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_PUBLISHER" Width="1.5" PointX="0.75" PointY="14.5" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_PUNISHMENT" Width="1.5" PointX="7.5" PointY="6.5" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_TILL" Width="1.5" PointX="5.25" PointY="3" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_USER" Width="1.5" PointX="3" PointY="15.125" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_BOOK_TBL_AUTHOR1" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_BOOK_TBL_CATEGORY" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_BOOK_TBL_LANGUAGE" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_BOOK_TBL_LIBRARY" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_BOOK_TBL_PUBLISHER" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_DEPOSIT_TBL_BOOK" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_DEPOSIT_TBL_EMPLOYEE" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_DEPOSIT_TBL_LIBRARY" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_DEPOSIT_TBL_USER" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_PUNISHMENT_TBL_DEPOSIT" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_EMPLOYEE_TBL_LIBRARY" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_PUNISHMENT_TBL_TILL" />
+        <AssociationConnector Association="LIBRARYDBModel.FK_TBL_PUNISHMENT_TBL_USER" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_MESSAGE" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LIBRARYDBModel.TBL_NOTIFICATION" Width="1.5" PointX="10.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

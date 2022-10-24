@@ -1,0 +1,75 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_EMPLOYEE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/AdminLTE3-master/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<br />
+<table class="table table-striped  table-hover table-bordered border-primary">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Id</th>
+        <th>Kullanıcı</th>
+        <th>Yetki</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (var e in Model)
+    {
+        <tr>
+            <td>@e.ID</td>
+            <td>@e.NAME @e.SURNAME</td>
+            <td>@e.POWER</td>
+
+            <td>
+                <a class="btn btn-danger btn-sm" href="Config/DeleteEmployee/@e.ID">
+                    <i class="fas fa-trash">
+                    </i>
+                    Sil
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-info btn-sm" href="/Config/GetEmployee/@e.ID">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Düzenle
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Admin Ekle</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"> Admin Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Config/NewEmployee/">
+                <div class="modal-body">
+                    <label>Ad</label>
+                    <input type="text" name="NAME" class="form-control" />
+                    <br />
+                    <label>SoyAd</label>
+                    <input type="text" name="SURNAME" class="form-control" />
+                    <br />
+                    <label>Mail</label>
+                    <input type="text" name="MAIL" class="form-control" />
+                    <br />
+                    <label>Power</label>
+                    <input type="text" name="POWER" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Kaydet</button>
+                  
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

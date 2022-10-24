@@ -1,0 +1,51 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBL_NOTIFICATION>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Duyuru Sayfası</h2>
+@using (Html.BeginForm("Index", "Notification", FormMethod.Get))
+{
+    //Kitap Arama
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Duyuru Bilgisi Giriniz: &nbsp;</b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+        @*<input type="text" class="form-control" placeholder="Aranacak kitabı giriniz...." />*@
+
+    </div>
+}
+
+
+
+<table class="table table-striped  table-hover table-bordered border-primary">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Duyuru No</th>
+        <th>Category</th>
+        <th>Tarih</th>
+        <th>İçerik</th>
+        <th> Sil</th>
+
+
+
+    </tr>
+
+
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.ID</td>
+            <td>@d.CATEGORY</td>
+            <td>@Convert.ToDateTime(d.DATE).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Notification/NotificationDetail/@d.ID" class="btn btn-check">Detaylar</a></td>
+            <td><a href="/Notification/NotificationDelete/@d.ID" class="btn btn-danger">Sil</a></td>
+
+
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Notification/NotificationAdd/" class="btn btn-primary">Yeni Duyuru Ekle</a>

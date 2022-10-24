@@ -1,0 +1,64 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_BOOK
+@{
+    ViewBag.Title = "BookGet";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+
+@using (Html.BeginForm("BookUpdate", "Book", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class=" form-group">
+        @Html.HiddenFor(m => m.ID)
+        @*<label>Kitap ID</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })*@
+    </div>
+    <div class=" form-group">
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(k => k.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Kategori</label>
+        @*@Html.TextBoxFor(k => k.CATEGORYID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_CATEGORY.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "Form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Yazarı</label>
+        @*@Html.TextBoxFor(k => k.AUTHORID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_AUTHOR.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Basım Yılı</label>
+        @Html.TextBoxFor(k => k.PRINTYEAR, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Yayın Evi</label>
+        @* @Html.TextBoxFor(k => k.PUBLISHERID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_PUBLISHER.ID, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Sayfa Sayısı</label>
+        @Html.TextBoxFor(k => k.PAGE, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Kitabın Dili</label>
+        @*@Html.TextBoxFor(k => k.LANGUAGEID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_LANGUAGE.ID, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Bulunduğu Kütüphane</label>
+        @*@Html.TextBoxFor(k => k.LANGUAGEID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_LIBRARY.ID, (List<SelectListItem>)ViewBag.dgr5, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Kitap Özeti</label>
+        @Html.TextAreaFor(k => k.DESCRIPTION, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+
+    </div>
+
+}
+
+

@@ -1,0 +1,109 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #e9e5e5;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #0094ff;
+                }
+
+        .main {
+            margin-left: 240px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+
+        <a href="/Statistics/LinqCard/"><i class="fa fa-home">&nbsp; Ana Sayfa </i></a>
+        <a href="/Book/Index/"><i class="fa fa-book">&nbsp; Kitaplar </i></a>
+        <a href="/Author/Index/"><i class="fa fa-pencil" aria-hidden="true">&nbsp; Yazarlar</i></a>
+        <a href="/Category/Index/"><i class="fa fa-list-ol" aria-hidden="true">&nbsp; Kategoriler </i></a>
+        <a href="/Publısher/Index/"><i class="fa fa-bookmark-o" aria-hidden="true">&nbsp; Yayınevi</i></a>
+        <a href="/Deposit/DepositGive/"><i class="fa fa-arrow-circle-o-up" aria-hidden="true">&nbsp; Ödünç kitap Ver</i></a>
+        <a href="/Deposit/Index/"><i class="fa fa-arrow-circle-o-down" aria-hidden="true">&nbsp; Ödünç kitap Al</i></a>
+        <a href="/Punıshment/Index"><i class="fa fa-money" aria-hidden="true">&nbsp; Kasa</i></a>
+        <a href="/Process/Index/"><i class="fa fa-tasks" aria-hidden="true">&nbsp; İşlemler</i></a>
+        <a href="/Statistics/Gallery/"><i class="fa fa-picture-o" aria-hidden="true">&nbsp; Galeri</i></a>
+        @*<a href="/Statistics/Index/"><i class="fa fa-line-chart" aria-hidden="true">&nbsp; İstatistikler</i></a>*@
+        
+        <a href="/Window/Index/"><i class="fa fa-window-restore" aria-hidden="true">&nbsp; Vitrin</i></a>
+
+        @if (User.IsInRole("A"))
+        {
+
+            <a href="/Employee/Index/"><i class="fa fa-address-card" aria-hidden="true">&nbsp; Personeller</i></a>
+            <a href="/User/Index/"><i class="fa fa-users" aria-hidden="true">&nbsp; Kullanıcılar</i></a>
+            <a href="/Notification/Index/"><i class="fa fa-bullhorn" aria-hidden="true">&nbsp;Duyurular</i></a>
+            <a href="/Config/Index/"><i class="fa fa-cogs" aria-hidden="true">&nbsp; Ayarlar</i></a>
+        }
+        @*<a href="/Chart/Index/"><i class="fa fa-pie-chart" aria-hidden="true">&nbsp; Grafikler</i></a>*@
+
+
+        <a href="/Panel/LogOut/"><i class="fa fa-sign-out" aria-hidden="true">&nbsp; Çıkış</i></a>
+
+
+        @*@foreach (var item in Model.AnaMenu.Tolist())
+        {
+            <a href="#">
+                 <i class="glyphicon glyphicon-home">&nbsp;@item.Baslik</i>
+                //Şart kotmanız gerekiyor alt menüde kayıt varsa ve yetkisi varsa bu for çalışsın if şartı konulacak
+                @foreach (var itemalt in item.altmenu.ToList())
+                {
+                    @itemalt.AltBaslik
+                }
+
+            </a>
+        }*@
+
+    </div>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_NOTIFICATION>
+@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Notifications</h2>
+
+
+<table class="table table-striped  table-hover table-bordered border-primary">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Category</th>
+        <th>Tarih</th>
+        <th>İçerik</th>
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+
+            <td>@d.CATEGORY</td>
+            <td>@Convert.ToDateTime(d.DATE).ToString("dd/MM/yyyy")</td>
+            <td>@d.CONTENTS</td>
+
+
+        </tr>
+    }
+</table>

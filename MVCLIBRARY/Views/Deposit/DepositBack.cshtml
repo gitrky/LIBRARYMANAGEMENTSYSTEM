@@ -1,0 +1,73 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_DEPOSIT
+@{
+    ViewBag.Title = "DepositBack";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+@using (Html.BeginForm("DepositUpdate", "Deposit", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class=" =" form-group>
+        <label>Hareket Id</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+        <br />
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(k => k.TBL_BOOK.NAME, new { @class = "form-control" })
+        <br />
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(k => k.TBL_USER.NAME, new { @class = "form-control" })
+        <br />
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(k => k.TBL_EMPLOYEE.NAME, new { @class = "form-control" })
+        <br />
+        <label>Alış Tarihi</label>
+        @Html.TextBoxFor(k => k.STARTTIME, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+        <br />
+        <label>Normal İade Tarihi</label>
+        @Html.TextBoxFor(k => k.ENDTIME, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+        <br />
+        <label>Üyenin Getirdiği Tarih</label>
+        <input type="text" class="form-control" name="USERGETTIME" value="@DateTime.Now.ToShortDateString()" />
+        <br/>
+        <label>Geç Gelen Gün Sayısı</label>
+        <input type="text" class="form-control" id="LateInput" value="@ViewBag.dgr" />
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-group" style="background-color: #41b9cf;color:white">Ödünç Kitabı Geri Al</button>
+    </div>
+   
+
+
+}
+
+@*@using (Html.BeginForm("DepositUpdate", "Deposit", FormMethod.Post))
+    {
+        <div style="margin-bottom:15px"></div>
+        <div class="form-group">
+            <label>Hareket Id</label>
+            @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+            <br />
+            <label>Kitap Adı</label>
+            @Html.TextBoxFor(k => k.TBL_BOOK.NAME, new { @class = "form-control" })
+            <br />
+            <label>Üye Adı</label>
+            @Html.TextBoxFor(k => k.TBL_USER.NAME, new { @class = "form-control" })
+            <br />
+            <label>Personel Adı</label>
+            @Html.TextBoxFor(k => k.TBL_EMPLOYEE.NAME, new { @class = "form-control" })
+            <br />
+            <label>Alış Tarihi</label>
+            @Html.TextBoxFor(k => k.STARTTIME, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+            <br />
+            <label>Normal İade Tarihi</label>
+            @Html.TextBoxFor(k => k.ENDTIME, "{0: dd.MM.yyyy}", new { @class = "form-control" })
+            <br />
+            <label>Üyenin Getirdiği Tarih</label>
+            <input type="text" class="form-control" name="USERGETTIME" value="@DateTime.Now.ToShortDateString()" />
+
+        </div>
+        <div>
+            <button class="btn btn-group" style="background-color: #41b9cf;color:white">Ödünç Kitabı Geri Al</button>
+        </div>
+    }*@

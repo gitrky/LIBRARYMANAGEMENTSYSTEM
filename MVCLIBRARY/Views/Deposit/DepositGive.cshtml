@@ -1,0 +1,49 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_DEPOSIT
+@{
+    ViewBag.Title = "DepositGive";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Üye Id</label>
+       @* @Html.TextBoxFor(k => k.USERID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_USER.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "Form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Id</label>
+        @*@Html.TextBoxFor(k => k.BOOKID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_BOOK.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "Form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel Id</label>
+        @*@Html.TextBoxFor(k => k.EMPLOYEEID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_EMPLOYEE.ID, (List<SelectListItem>)ViewBag.dgr3, new { @class = "Form-control" })
+    </div>
+    <div style="margin-top:15px">
+            <label>Kütüphane Id</label>
+            @*@Html.TextBoxFor(k => k.LIBRARYID, new { @class = "form-control" })*@
+            @Html.DropDownListFor(k => k.TBL_LIBRARY.ID, (List<SelectListItem>)ViewBag.dgr4, new { @class = "Form-control" })
+        </div>
+
+    <div style="margin-top:15px">
+        @*şimdiki zamanı alıyor*@
+        <label>Kitap Alış Tarihi</label>
+        <input type="text" class="form-control" name="STARTTIME"
+               value="@DateTime.Now.ToShortDateString()" />
+    </div>
+
+    <div style="margin-top:15px">
+        @*şimdiki zamana istediğin kadar süre ekliyor*@
+        <label>Kitap İade Tarihi</label>
+        <input type="text" class="form-control" name="ENDTIME"
+               value="@DateTime.Now.AddDays(7).ToShortDateString()" />
+    </div>
+
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color:#9f13ba; color:white">Kitabı Ödünç Ver</button>
+        <input type="hidden" value="False" name="TRANSACTIONSTATUS" />
+    </div>
+</form>
+

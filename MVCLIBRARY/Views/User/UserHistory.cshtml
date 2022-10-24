@@ -1,0 +1,28 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_DEPOSIT>
+@{
+    ViewBag.Title = "UserHistory";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.u1</h2>
+
+<br />
+<table class="table table-danger">
+
+    <tr>
+        <th>Kitap Adı</th>
+        <th>Personel Adı</th>
+        <th>Alış Tarihi</th>
+        <th>İade Tarihi</th>
+    </tr>
+    @foreach(var x in Model)
+            {
+        <tr>
+            <td>@x.TBL_BOOK.NAME</td>
+            <td>@x.TBL_EMPLOYEE.NAME</td>
+            <td>@Convert.ToDateTime(x.STARTTIME).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.USERGETTIME).ToString("dd/MM/yyyy")</td>
+        </tr>
+            }
+</table>

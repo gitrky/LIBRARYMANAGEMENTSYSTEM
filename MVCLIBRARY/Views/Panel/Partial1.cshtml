@@ -1,0 +1,19 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_NOTIFICATION>
+
+@foreach (var x in Model)
+{
+    <div class="post">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="~/AdminLTE3-master/dist/img/avatar5.png" alt="user image">
+            <span class="username">
+                <a href="#">@x.CATEGORY.</a>
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+            </span>
+            <span class="description">@x.DATE.ToString();</span>
+        </div>
+        <p>
+            @x.CONTENTS
+        </p>
+    </div>
+}

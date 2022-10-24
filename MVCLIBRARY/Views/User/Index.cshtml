@@ -1,0 +1,51 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBL_USER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2>Üye Listesi</h2>
+
+@using (Html.BeginForm("Index", "User", FormMethod.Get))
+{
+    //Kitap Arama
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Üye Bilgisi Giriniz: &nbsp;</b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+        @*<input type="text" class="form-control" placeholder="Aranacak kitabı giriniz...." />*@
+
+    </div>
+}
+
+
+<table class="table table-striped  table-hover table-bordered border-primary">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Üye ID</th>
+        <th>Üye Adı Soyadı</th>
+        <th>Okul</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Üye Kitap Geçmişi</th>
+    </tr>
+
+    @foreach (var uye in Model)
+    {
+        <tr>
+            <td>@uye.ID</td>
+            <td>@uye.NAME &nbsp; @uye.SURNAME</td>
+            <td>@uye.SCHOOL</td>
+            
+            <td><a href="/User/UserDelete/@uye.ID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/User/UserGet/@uye.ID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/User/UserHistory/@uye.ID" class="btn btn-success" style="background-color:lightseagreen">Kitap Geçmişi</a></td>
+        </tr>
+    }
+</table>
+@*//model içinden gelen değerleri listele*@
+@*sayfa değeri url action alıcak(sayfa geçiş tuşlarına basılınca gelen değerler) ve ındekse gönderip url action değernii ındexte döndürür *@
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+<a href="/User/UserAdd/" class="btn btn-primary">Yeni Üye Ekle</a>

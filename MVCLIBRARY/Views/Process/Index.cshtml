@@ -1,0 +1,53 @@
+﻿@using MVCLIBRARY.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBL_DEPOSIT>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h2>İadesi Yapılan Kitaplar</h2>
+
+
+@using (Html.BeginForm("Index", "Deposit", FormMethod.Get))
+{
+    //Kitap Arama
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Kitap Bilgisi Giriniz: &nbsp;</b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+        @*<input type="text" class="form-control" placeholder="Aranacak kitabı giriniz...." />*@
+
+    </div>
+}
+
+<table class="table table-striped  table-hover table-bordered border-primary">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>İşlem Id</th>
+        <th>Kitap Adı</th>
+        <th>Üye Adı</th>
+        <th>Personel Adı</th>
+        <th>Kütüphane Adı</th>
+        <th>Alış Tarihi</th>
+        <th>Üye İade Tarihi</th>
+
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.ID</td>
+            <td>@k.TBL_BOOK.NAME</td>
+            <td>@k.TBL_USER.NAME &nbsp @k.TBL_USER.SURNAME</td>
+            <td>@k.TBL_EMPLOYEE.NAME  &nbsp @k.TBL_EMPLOYEE.SURNAME</td>
+            <td>@k.TBL_BOOK.TBL_LIBRARY.NAME</td>
+            <td>@Convert.ToDateTime(k.STARTTIME).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(k.USERGETTIME).ToString("dd/MM/yyyy")</td>
+
+            @*<td>
+                    <a href="/Deposit/DepositBack/@k.ID" class="btn btn-default"
+                       style="background-color:#ef4abe; color:white">Detaylar</a>
+                </td>*@
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))

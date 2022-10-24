@@ -1,0 +1,46 @@
+﻿@model MVCLIBRARY.Models.Entity.TBL_EMPLOYEE
+@{
+    ViewBag.Title = "EmployeeGet";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+@using (Html.BeginForm("EmployeeUpdate", "Employee", FormMethod.Post))
+{
+    <div style=" margin-bottom:15px"></div>
+    <div class="from-group">
+        @Html.HiddenFor(m => m.ID)
+        @*@Html.TextBoxFor(k => k.ID, new { @class = "form-control" })*@
+    </div>
+    <div class=" form-group">
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(k => k.NAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Soyadı</label>
+        @Html.TextBoxFor(k => k.SURNAME, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Yetkisi</label>
+        @Html.TextBoxFor(k => k.POWER, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Telefon Numarası</label>
+        @Html.TextBoxFor(k => k.TELEPHONENUM, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Mail</label>
+        @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Adresi</label>
+        @Html.TextBoxFor(k => k.ADDRESS, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Çalıştığı Kütüphane</label>
+        @*@Html.TextBoxFor(k => k.LANGUAGEID, new { @class = "form-control" })*@
+        @Html.DropDownListFor(k => k.TBL_LIBRARY.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

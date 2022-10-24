@@ -1,0 +1,39 @@
+﻿@using MVCLIBRARY.Models.Entity
+@model List<TBL_PUBLISHER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yayın Evleri</h2>
+
+@using (Html.BeginForm("Index", "Publısher", FormMethod.Get))
+{
+    //Kitap Arama
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Yayınevi Bilgisi Giriniz: &nbsp;</b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+        @*<input type="text" class="form-control" placeholder="Aranacak kitabı giriniz...." />*@
+
+    </div>
+}
+
+<table class="table table-striped  table-hover table-bordered border-primary">
+    <tr style="background-color:rgb(252,178,22)">
+        <th>Yayınevi Id</th>
+        <th>Yayınevi Adı</th>
+        <th>Yayınevi Sil </th>
+        <th>Yayınevi Güncelle</th>
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        <tr>
+            <td>@ktg.ID</td>
+            <td>@ktg.NAME</td>
+            <td><a href="/Publısher/PublısherDelete/@ktg.ID" class="btn btn-danger ">SİL</a></td>
+            <td><a href="/Publısher/PublısherGet/@ktg.ID" class="btn btn-success ">GÜNCELLE</a></td>
+
+        </tr>
+    }
+</table>
+<a href="/Publısher/PublısherAdd/" class="btn btn-primary">Yeni Yayınevi Ekle</a>
